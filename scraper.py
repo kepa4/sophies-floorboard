@@ -1,11 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
-webpage = 'https://sophiesfloorboard.blogspot.com/'
+webpage = 'https://sophiesfloorboard.blogspot.com'
 response = requests.get(webpage)
 
 bs = BeautifulSoup(response.text, 'html.parser')
 
-javascript = bs.find_all('script', attrs={'type': 'text/javascript'})
-
-print(javascript)
+links = bs.find_all('ul', 'posts')
+print(links)
